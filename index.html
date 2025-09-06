@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Castro Holding Group - Innovación Inmobiliaria y Tecnológica</title>
+    <style>
+        :root {
+            --primary: #0d47a1;
+            --secondary: #ff6f00;
+            --accent: #004d40;
+            --light: #f5f5f5;
+            --dark: #212121;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #e65100;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services {
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .about {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .team {
+            background-color: white;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 5px solid var(--light);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact {
+            background-color: #f9f9f9;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-group label {
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Castro Holding Group</div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#equipo">Equipo</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Revolucionando el sector inmobiliario con tecnología IA</h1>
+            <p>Integramos inteligencia artificial, marketing digital avanzado y modelos de negocio escalables para crear un ecosistema integral que genera valor sostenible.</p>
+            <a href="#contacto" class="btn">Contactar ahora</a>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos soluciones integrales bajo cinco epígrafes de actividad especializados</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Agencia Inmobiliaria</h3>
+                        <p>Gestión integral de transacciones inmobiliarias con modelo de comisiones escalonadas y equipo de vendedores especializados.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Marketing y Publicidad</h3>
+                        <p>Servicios integrales de marketing digital con modelo "Trabajamos primero, pagas después" garantizando resultados.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Desarrollo Tecnológico IA</h3>
+                        <p>Creación de soluciones de automatización inteligente: bots de video, chatbots 24/7, voice chat y automatización de respuestas.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Administración Empresarial</h3>
+                        <p>Gestión de participaciones y consultoría estratégica con adquisición del 5% de empresas cliente.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <h3>Servicios Integrales</h3>
+                        <p>Soluciones de automatización y marketing para empresas, enfocadas en implementación de estrategias comerciales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="nosotros">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Ventaja Competitiva</h2>
+                <p>Combinamos lo mejor de ambos mundos: experiencia tradicional e innovación tecnológica</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Modelo de Negocio Innovador</h3>
+                    <p>Castro Holding Group se presenta como una innovadora holding empresarial con visión disruptiva en el sector inmobiliario y tecnológico español.</p>
+                    <p>Nuestra estructura se basa en cinco epígrafes de actividad que nos permiten ofrecer servicios integrales mientras optimizamos recursos mediante nuestra estructura holding.</p>
+                    <h3>Franquicias Estratégicas</h3>
+                    <p>Contamos con el respaldo de Best House (franquicia inmobiliaria tradicional) e Inmoverse (plataforma digital innovadora), combinando lo mejor de ambos modelos.</p>
+                    <a href="#contacto" class="btn">Conoce más</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Tecnología IA en bienes raíces">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="equipo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Equipo Directivo</h2>
+                <p>Profesionales con experiencia en ventas, gestión comercial y tecnología</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Isaac Renan Castro Arana">
+                    <h3>Isaac Renan Castro Arana</h3>
+                    <p>CEO</p>
+                    <p>Experiencia en ventas y gestión comercial, especialización en Ley de Segunda Oportunidad.</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80" alt="Jorge Andre Castro Achahuanco">
+                    <h3>Jorge Andre Castro Achahuanco</h3>
+                    <p>Director Operativo</p>
+                    <p>Perfil joven con capacidad de innovación, conocimientos digitales y de nuevas tecnologías.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+                <p>Estamos listos para transformar tu experiencia inmobiliaria con tecnología de vanguardia</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Dirección</h3>
+                        <p>Via Hispanidad 2 - 9C, Zaragoza, Aragón, España, CP 50009</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Teléfono</h3>
+                        <p>876 65 16 52</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>icastro@castroholdinggroup.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Web</h3>
+                        <p>www.castroholding.es</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <input type="text" id="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Castro Holding Group SL. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple form validation
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gracias por su mensaje. Nos pondremos en contacto pronto.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
